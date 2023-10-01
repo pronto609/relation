@@ -2,6 +2,7 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\Answer;
 use App\Entity\Question;
 use App\Factory\QuestionFactory;
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -18,6 +19,20 @@ class AppFixtures extends Fixture
             ->many(5)
             ->create()
         ;
+
+        $answer = new Answer();
+        $answer->setContent('This question answer');
+        $answer->setUsername('wrgbetrbg');
+
+        $question = new Question();
+        $question->setName('Title question');
+        $question->setQuestion('...wergethrhr .e.grt.tghrthrthrt ...');
+
+        $answer->setQuestion($question);
+
+        $manager->persist($answer);
+        $manager->persist($question);
+
 
         $manager->flush();
     }
