@@ -44,7 +44,7 @@ final class AnswerFactory extends ModelFactory
             'votes' => self::faker()->numberBetween(-20, 50),
             'createdAt' => self::faker()->dateTimeBetween('-1 year', 'now'),
             'updatedAt' => self::faker()->dateTimeBetween('-1 year', 'now'), // TODO add DATETIME ORM type manually
-            'question' => QuestionFactory::random()
+            'question' => QuestionFactory::new()->unpublished()
         ];
     }
 
