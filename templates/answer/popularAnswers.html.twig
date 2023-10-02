@@ -4,8 +4,20 @@
 
 {% block body %}
     <div class="container my-md-4">
-        <div class="row">
+        <div class="d-flex justify-content-between">
             <h1>Most Popular Answers</h1>
+
+            <form action="{{ path('app_popular_answers') }}">
+                <input
+                        type="search"
+                        name="q"
+                        value="{{ app.request.query.get('q') }}"
+                        placeholder="Search..."
+                        aria-label="Search"
+
+                >
+            </form>
+        </div>
 
             <ul class="list-unsyled">
                 {% for answer in answers %}
@@ -14,6 +26,5 @@
                     }) }}
                 {% endfor %}
             </ul>
-        </div>
     </div>
 {% endblock %}
