@@ -47,6 +47,8 @@ class AnswerRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('answers')
         ->addCriteria(self::createApprovedCriteria())
         ->orderBy('answers.votes', 'DESC')
+        ->innerJoin('answers.question', 'question')
+            ->addSelect('question')
         ->setMaxResults(10)
         ->getQuery()
         ->getResult();
