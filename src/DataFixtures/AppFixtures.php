@@ -6,6 +6,7 @@ use App\Entity\Answer;
 use App\Entity\Question;
 use App\Factory\AnswerFactory;
 use App\Factory\QuestionFactory;
+use App\Factory\QuestionTagFactory;
 use App\Factory\TagFactory;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
@@ -16,6 +17,12 @@ class AppFixtures extends Fixture
     public function load(ObjectManager $manager)
     {
         TagFactory::createMany(100);
+
+        QuestionTagFactory::createMany(10);
+
+        $manager->flush();
+
+        return;
 
         $questions = QuestionFactory::createMany(20, function(){
             return [
