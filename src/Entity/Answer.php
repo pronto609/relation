@@ -130,4 +130,13 @@ class Answer
     {
         return $this->status == self::STATUS_APPROVED;
     }
+
+    public function getQuestionText(): string
+    {
+        if (!$this->getQuestion()) {
+            return '';
+        }
+
+        return (string) $this->getQuestion()->getQuestion();
+    }
 }
