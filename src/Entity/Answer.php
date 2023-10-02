@@ -128,6 +128,6 @@ class Answer
 
     public function isApproved():bool
     {
-        return $this->status = self::STATUS_APPROVED;
+        return $this->status == self::STATUS_APPROVED;
     }
 }
